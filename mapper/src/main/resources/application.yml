@@ -5,6 +5,10 @@ spring:
       url: jdbc:mysql://localhost:3306/rongmall
       username: root
       password: root
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
 mybatis:
   mapper-locations: classpath*:mapper/*Mapper.xml
   type-aliases-package: com.yr.rongmall.entity
