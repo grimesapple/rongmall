@@ -3,10 +3,7 @@ package com.yr.rongmall.controller;
 import com.yr.rongmall.entity.Users;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.yr.rongmall.service.UsersService;
 import com.yr.rongmall.vo.ResultVO;
 
@@ -19,6 +16,7 @@ import javax.annotation.Resource;
 @RestController
 @Api(tags = "用户控制器")
 @RequestMapping("users")
+@CrossOrigin
 public class UsersController {
 
 
@@ -46,7 +44,7 @@ public class UsersController {
      * @return 返回结果
      */
     @ApiOperation("登录账号")
-    @PostMapping("/login")
+    @GetMapping("/login")
     public ResultVO<Users> login(@RequestParam(value = "username") String username,
                                  @RequestParam(value = "password") String password) {
         return usersService.login(username,password)?resultVO.ok("登录成功") : resultVO.error("账号密码错误");
